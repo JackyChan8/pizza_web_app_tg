@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Shop for Telegram</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Telegram Web App Script -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div id="menu">
+        <h1>Pizza Shop</h1>
+        <img src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png">
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel nemo placeat molestias ad enim repellat autem officia adipisci facere ratione commodi, nulla aut rem, error exercitationem fuga veritatis. Amet, dolores.
+            Laudantium neque, vitae est exercitationem atque laboriosam aliquid repellendus fugit accusantium fuga inventore, soluta accusamus ipsam pariatur eligendi eum quos maiores molestiae maxime perferendis aperiam dignissimos deserunt, enim saepe. Unde.
+            Aut aspernatur neque aliquam non a nobis, consequuntur repudiandae voluptates maiores fugit enim nostrum est.
+        </p>
+        <button onclick="PagesApp.showGoodsMenu()">Order</button>
+    </div>
+    <div id="goods_menu">
+        <div id="goods">
+            <div class="good">
+                <div class="counter">1</div>
+                <img src="./img/1.png" alt="Beef Burger">
+                <div class="good__info">
+                    <p class="good__name">Beef Burger</p>
+                    <span class="good_price">4.99$</span>
+                </div>
+                <div class="good__buttons">
+                    <button onclick="GoodPage.chooseGood(0)">ADD</button>
+                    <div class="good__buttons_choose">
+                        <button class="good_del" onclick="GoodPage.decrement(this)">-</button>
+                        <button class="good_add" onclick="GoodPage.increment(this)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="good">
+                <div class="counter">1</div>
+                <img src="./img/2.png" alt="Suya Burger">
+                <div class="good__info">
+                    <p class="good__name">Suya Burger</p>
+                    <span class="good_price">3.99$</span>
+                </div>
+                <div class="good__buttons">
+                    <button onclick="GoodPage.chooseGood(1)">ADD</button>
+                    <div class="good__buttons_choose unshow_elem">
+                        <button class="good_del" onclick="GoodPage.decrement(this)">-</button>
+                        <button class="good_add" onclick="GoodPage.increment(this)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="good">
+                <div class="counter">1</div>
+                <img src="./img/3.png" alt="Italian Buns">
+                <div class="good__info">
+                    <p class="good__name">Italian Buns</p>
+                    <span class="good_price">3.59$</span>
+                </div>
+                <div class="good__buttons">
+                    <button onclick="GoodPage.chooseGood(2)">ADD</button>
+                    <div class="good__buttons_choose unshow_elem">
+                        <button class="good_del" onclick="GoodPage.decrement(this)">-</button>
+                        <button class="good_add" onclick="GoodPage.increment(this)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="good">
+                <div class="counter">1</div>
+                <img src="./img/4.png" alt="Big Mac">
+                <div class="good__info">
+                    <p class="good__name">Big Mac</p>
+                    <span class="good_price">6.99$</span>
+                </div>
+                <div class="good__buttons">
+                    <button onclick="GoodPage.chooseGood(3)">ADD</button>
+                    <div class="good__buttons_choose unshow_elem">
+                        <button class="good_del" onclick="GoodPage.decrement(this)">-</button>
+                        <button class="good_add" onclick="GoodPage.increment(this)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="good">
+                <div class="counter">1</div>
+                <img src="./img/5.png" alt="Chicken Burger">
+                <div class="good__info">
+                    <p class="good__name">Chicken Burger</p>
+                    <span class="good_price">4.99$</span>
+                </div>
+                <div class="good__buttons">
+                    <button onclick="GoodPage.chooseGood(4)">ADD</button>
+                    <div class="good__buttons_choose unshow_elem">
+                        <button class="good_del" onclick="GoodPage.decrement(this)">-</button>
+                        <button class="good_add" onclick="GoodPage.increment(this)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="good">
+                <div class="counter">1</div>
+                <img src="./img/6.png" alt="Royal Burger">
+                <div class="good__info">
+                    <p class="good__name">Royal Burger</p>
+                    <span class="good_price">5.99$</span>
+                </div>
+                <div class="good__buttons">
+                    <button onclick="GoodPage.chooseGood(5)">ADD</button>
+                    <div class="good__buttons_choose unshow_elem">
+                        <button class="good_del" onclick="GoodPage.decrement(this)">-</button>
+                        <button class="good_add" onclick="GoodPage.increment(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <button class="show-order-btn">Посмотреть Заказ</button> -->
+    </div>
+    <div id="detail_order">
+        <div class="header">
+            <h2>Your Order</h2>
+            <button onclick="PagesApp.showGoodsMenu()">Edit</button>
+        </div>
+        <div class="order_goods"></div>
+        <input type="text" placeholder="Add Comment" id="comment-order"/>
+    </div>
+
+    <!-- <form id="form">
+        <input type="text" placeholder="Имя" id="user_name">
+        <input type="text" placeholder="Email" id="user_email">
+        <input type="text" placeholder="Телефон" id="user_phone">
+        <button id="order" onclick="placeOrder()">Оформить</button>
+    </form> -->
+
+    <!-- Scripts -->
+    <script>
+        // ------------------------------------- Telegram App ----------------
+        const tgApp = window.Telegram.WebApp;
+
+        const TelegramApp = {
+            init() {
+                tgApp.platform = 'Testing';
+                this.ready();
+                this.expand();
+                this.setStylingApp();
+                this.closingConfirmationEnable();
+                this.eventMainButton();
+                this.eventBackButton();
+            },
+            ready() {
+                // Ready WebApp
+                tgApp.expand();
+            },
+            close() {
+                // Close App
+                tgApp.close();
+            },
+            expand() {
+                // Max Height App
+                tgApp.expand();
+            },
+            closingConfirmationEnable() {
+                // Closing Confirmation Enable
+                tgApp.enableClosingConfirmation();
+            },
+            closingConfirmationDisable() {
+                // Closing Confirmation Disable
+                tgApp.disableClosingConfirmation();
+            },
+            setStylingApp() {
+                // Set Styling App
+                // tgApp.headerColor = '#1787eb';
+                // tgApp.backgroundColor = '#eb17d9';
+                tgApp.section_header_text_color = 'var(--tg-theme-section-header-text-color)';
+            },
+            // Buttons
+            toggleSettingsBtn() {
+                // Show / UnShow Settings Button
+                const settingsButton = tgApp.SettingsButton;
+                if (settingsButton.isVisible) {
+                    settingsButton.hide();
+                } else {
+                    settingsButton.show();
+                }
+            },
+            toggleMainButton(text = 'Default', isActive = true) {
+                // Show / UnShow Main Button
+                const mainButton = tgApp.MainButton;
+                mainButton.setText(text);
+                mainButton.isActive = isActive;
+                mainButton.textColor = '#fff';
+                mainButton.color = '#43d108';
+                
+                if (this.isVisibleMainButton()) {
+                    mainButton.hide();
+                } else {
+                    mainButton.show();
+                }
+            },
+            showBackButton() {
+                // Show Back Button
+                backButton = tgApp.BackButton;
+                if (!backButton.isVisible) {
+                    tgApp.BackButton.show();
+                }
+            },
+            hideBackButton() {
+                // Hide Back Button
+                backButton = tgApp.BackButton;
+                if (backButton.isVisible) {
+                    backButton.hide();
+                }
+            },
+            setActiveButton() {
+                // Set Active Main Button
+                tgApp.MainButton.isActive = true;
+            },
+            // Exist Actions
+            isVisibleMainButton() {
+                // Return Boolean, Visible Main Button
+                return tgApp.MainButton.isVisible;
+            },
+            // Get Data
+            getMainButtonText() {
+                // Return Current MainButton Text
+                return tgApp.MainButton.text;
+            },
+            // Set Data
+            setMainButtonText(text) {
+                // Setting Main Button Text
+                tgApp.MainButton.setText(text);
+            },
+            // Events
+            eventMainButton() {
+                tgApp.MainButton.onClick(() => {
+                    if (this.getMainButtonText() == 'view order'.toUpperCase()) {
+                        PagesApp.showDetailOrderMenu();
+                    }
+                })
+            },
+            eventBackButton() {
+                tgApp.BackButton.onClick(() => {
+                    if (goodsBlock.style.display === 'block') {
+                        // Show Main Menu Page
+                        PagesApp.showMainMenu();
+
+                        if (this.isVisibleMainButton()) {
+                            this.toggleMainButton();
+                        }
+                        // Clear All Counters
+                        GoodPage.allCounterZero();
+                        
+                        // Hide Back Button
+                        this.hideBackButton();
+                    } else if (detailOrder.style.display === 'block') {
+                        // Show Order Page
+                        PagesApp.showGoodsMenu();
+                    }
+                })
+            },
+        };
+
+        // ------------------------------------- Pages ----------------
+
+        const PagesApp = {
+            showMainMenu() {
+                goodsBlock.style.display = 'none';
+                menuBlock.style.display = 'block';
+            },
+            showGoodsMenu() {
+                // Show Goods Menu Page
+                menuBlock.style.display = 'none';
+                goodsBlock.style.display = 'block';
+                detailOrder.style.display = 'none'
+                TelegramApp.showBackButton();
+                TelegramApp.setMainButtonText('VIEW ORDER');
+            },
+            showDetailOrderMenu() {
+                // Show Detail Order Page
+                goodsBlock.style.display = 'none';
+                detailOrder.style.display = 'block';
+                TelegramApp.showBackButton();
+                TelegramApp.setMainButtonText('Pay 10$');
+            },
+        };
+
+        // Init Telegram Application
+        TelegramApp.init();
+
+        const menuBlock = document.querySelector('#menu');
+        const goodsBlock = document.querySelector('#goods_menu');
+        const detailOrder = document.querySelector('#detail_order');
+        const formBlock = document.querySelector('#form');
+
+
+        // ------------------------------------- Goods Menu ----------------
+        let countClick = 0;
+        const goods = document.querySelector('#goods_menu').querySelectorAll('.good');
+        
+        const GoodPage = {
+            // Added Good
+            chooseGood(elem_id) {
+                const good = goods[elem_id];
+                const goodButton = good.querySelector('.good__buttons');
+                
+                // Count Increment
+                countClick += 1;
+                
+                // Added Main Button
+                if (!TelegramApp.isVisibleMainButton()) {
+                    TelegramApp.toggleMainButton('VIEW ORDER');
+                }
+                // Toggle Button to (Increment / Decrement)
+                GoodPage.toggleShowGoodButton(goodButton, good, true);
+            },
+            // Increment Count Choose Good
+            increment(e) {
+                const counterElem = e.parentElement.parentElement.parentElement.querySelector('.counter');
+                counterElem.textContent++;
+                countClick++;
+            },
+            // Decrement Count Choose Good
+            decrement(e) {
+                const good = e.parentElement.parentElement.parentElement;
+                const goodButton = good.querySelector('.good__buttons');
+                const counterElem = good.querySelector('.counter');
+
+                // Check Counter
+                if (counterElem.textContent > 1) {
+                    counterElem.textContent--;
+                } else {
+                    // Toggle Button to ADD
+                    GoodPage.toggleShowGoodButton(goodButton, good, false);
+                }
+                // Count Decrement
+                countClick--;
+                // Check All Counter
+                if (!countClick) {
+                    TelegramApp.toggleMainButton();
+                }
+            },
+            // Toggle Show Buttons
+            toggleShowGoodButton(goodButton, good, isShow = true) {
+                goodButton.querySelector('button').style.display = isShow ? 'none' : 'block';
+                good.querySelector('.counter').style.display = isShow ? 'flex' : 'none';
+                goodButton.querySelector('.good__buttons_choose').style.display = isShow ? 'flex' : 'none';
+            },
+            // Clear All Counters
+            allCounterZero() {
+                goods.forEach((el) => {
+                    el.querySelector('.counter').textContent = '1';
+                    el.querySelector('.counter').style.display = 'none';
+                    el.querySelector('.good__buttons').querySelector('button').style.display = 'block';
+                    el.querySelector('.good__buttons').querySelector('.good__buttons_choose').style.display = 'none';
+                })
+                countClick = 0;
+            }
+        };
+
+    </script>
+</body>
+</html>
